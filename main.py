@@ -17,7 +17,7 @@ def predict_digit(img):
     img = img.convert('L')
     img = np.array(img)
     img = img - default_img
-    print(img.reshape(1, 784)[0])
+    # print(img.reshape(1, 784)[0])
     if all(a == 0 for a in img.reshape(1, 784)[0]):
         return -1, None
     # изменение размерности для поддержки модели ввода и нормализации
@@ -65,7 +65,7 @@ class App(tk.Tk):
         if digit == -1:
             self.label.configure(text="Ошибка:\nпустое поле\nввода")
         else:
-            self.label.configure(text=str(digit) + ', ' + str(int(acc * 100)) + '%')
+            self.label.configure(text="Результат: " + str(digit) + '\nВероятность: ' + str(int(acc * 100)) + '%')
 
     def draw_lines(self, event):
         self.x = event.x
